@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahaman Ahamed Shorif | Portfolio</title>
+    <!-- Font Awesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Design Variables (SeyamCodes Dark Minimalist Theme) */
+        :root {
+            --bg-color: #0b0f19;       /* Ultra Deep Slate Black */
+            --card-bg: #131c2e;        /* Premium Slate Blue Card Background */
+            --accent-color: #38bdf8;   /* Cyber Cyan Accents */
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --text-main: #f8fafc;      /* Crisp White */
+            --text-muted: #94a3b8;     /* Elegant Muted Gray */
+            --border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* Glassmorphic Navbar */
+        header {
+            background-color: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 90px 0;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent-color);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 22px;
+            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 38px;
+            max-width: 600px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0b0f19;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Profile Images Display Component */
+        .hero-images {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-container-main {
+            width: 280px;
+            height: 280px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: rotate(-3deg);
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+
+        .img-container-main:hover {
+            transform: rotate(0deg) scale(1.03);
+            border-color: var(--accent-color);
+        }
+
+        .img-container-sub {
+            position: absolute;
+            width: 200px;
+            height: 140px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            bottom: -30px;
+            right: -10px;
+            transform: rotate(6deg);
+            transition: all 0.5s ease;
+            z-index: 3;
+        }
+
+        .img-container-sub:hover {
+            transform: rotate(0deg) scale(1.05);
+            border-color: var(--accent-color);
+        }
+
+        .hero-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Global Layout */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header p {
+            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        /* About & Personal Info Grid */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.6fr 1.1fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .about-bio p {
+            color: var(--text-muted);
+            font-size: 17px;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .personal-info-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .personal-info-card h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.02);
+            padding-bottom: 8px;
+        }
+
+        .info-item .label {
+            color: var(--text-muted);
+        }
+
+        .info-item .value {
+            font-weight: 500;
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        /* Grid System for Skills & Education */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .custom-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .custom-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            color: var(--accent-color);
+            margin-bottom: 22px;
+            background: rgba(56, 189, 248, 0.05);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        .custom-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .custom-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Timeline Style for Academic Qualification */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: rgba(56, 189, 248, 0.2);
+            transform: translateX(4px);
+        }
+
+        .timeline-badge {
+            font-size: 12px;
+            font-weight: 700;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .timeline-institution {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-result {
+            font-size: 15px;
+            font-weight: 600;
+            color: #10b981; /* Premium Emerald Accent for Good Grades */
+        }
+
+        /* Project Display Component */
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.25);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .project-banner {
+            height: 180px;
+            background: linear-gradient(135deg, #131c2e 0%, #0b0f19 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.03);
+            font-size: 55px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .project-banner i {
+            color: rgba(56, 189, 248, 0.15);
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 11px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 12px;
+            border-radius: 6px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .project-body h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project-body p {
+            color: var(--text-muted);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        /* Contact Modern Callout Box */
+        .contact-box {
+            background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 60%), var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 60px 40px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .contact-box h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 35px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 35px;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 45px 0;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+            background: #080b12;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+            .hero h1 {
+                font-size: 42px;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .hero-images {
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                gap: 20px;
+            }
+            section {
+                padding: 70px 0;
+            }
+            .contact-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Rahaman Ahamed Shorif<span>.</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">হোম</a></li>
+                    <li><a href="#about">পরিচিতি</a></li>
+                    <li><a href="#qualifications">যোগ্যতা</a></li>
+                    <li><a href="#services">দক্ষতা</a></li>
+                    <li><a href="#projects">প্রজেক্ট</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <span class="badge"><i class="fa-solid fa-circle-check" style="margin-right: 6px; color: #10b981;"></i> চাকরির জন্য প্রস্তুত (Available for Job Applications)</span>
+                    <h1>স্বাস্থ্যসেবা ।</h1>
+                    <p>আমি রহমান আহমেদ শরীফ, একজন নার্সিং প্রফেশনাল চিকিৎসা বিজ্ঞানের ক্লিনিক্যাল কেয়ার থেকে শুরু করে দক্ষতা ফুটিয়ে তুলি।</p>
+                    <div class="btn-group">
+                        <a href="#contact" class="btn-primary">অ্যাপ্লিকেশন বা যোগাযোগ</a>
+                        <a href="#projects" class="btn-secondary">কাজের নমুনা <i class="fa-solid fa-arrow-right" style="font-size: 11px; margin-left: 6px;"></i></a>
+                    </div>
+                </div>
+                <!-- Profile Image Showcase Component Component using provided files -->
+                <div class="hero-images">
+                    <div class="img-container-main" title="Rahaman Ahamed Shorif Profile Portrait">
+                        <!-- Portrait Image File Asset -->
+                        <img src="public/images/1.jpg" alt="Rahaman Ahamed Shorif Portrait">
+                    </div>
+                    <div class="img-container-sub" title="Rahaman Ahamed Shorif Environment Shot">
+                        <!-- Landscape Environment File Asset -->
+                        <img src="public/images/2.jpg" alt="Rahaman Ahamed Shorif Environment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <p>পরিচিতি</p>
+                <h2>আমার সংক্ষিপ্ত জীবনবৃত্তান্ত</h2>
+            </div>
+            <div class="about-layout">
+                <div class="about-bio">
+                    <p>আমি বর্তমানে বাংলাদেশে <strong>B.Sc. in Nursing</strong> বাংলাদেশ নার্সিং ও মিডওয়াইফারি কাউন্সিল (BNMC) কর্তৃক একজন অনুমোদিত রেজিস্টার্ড নার্স হিসেবে যেকোনো স্বনামধন্য হাসপাতাল বা স্বাস্থ্যসেবা কেন্দ্রে ফুল-টাইম কাজের সুযোগ খুঁজছি। আমার নার্সিং দক্ষতা, রোগীদের প্রতি যত্নশীল মনোভাব এবং যেকোনো জরুরি পরিস্থিতি দক্ষতার সাথে মোকাবেলা করার ক্ষমতার মাধ্যমে রোগীদের সর্বোচ্চ মানের সেবা প্রদান করাই আমার মূল লক্ষ্য।</p>
+                    <p>চিকিৎসা ক্ষেত্রের পাশাপাশি আধুনিক প্রযুক্তির প্রতি আমার গভীর আকর্ষণ রয়েছে। </p>
+                </div>
+                <!-- Identity Card component parsed accurately from official birth cert & transcripts -->
+                <div class="personal-info-card">
+                    <h3>ব্যক্তিগত তথ্য বিবরণী</h3>
+                    <div class="info-item"><span class="label">পূর্ণ নাম:</span> <span class="value">রহমান আহমেদ শরীফ</span></div>
+                    <div class="info-item"><span class="label">জন্ম তারিখ:</span> <span class="value">১৪/০৫/২০০২</span></div>
+                    <div class="info-item"><span class="label">রক্তের গ্রুপ:</span> <span class="value">A+ (পজিটিভ)</span></div>
+                    <div class="info-item"><span class="label">জাতীয়তা:</span> <span class="value">বাংলাদেশী</span></div>
+                    <div class="info-item"><span class="label">পিতার নাম:</span> <span class="value">বাহা উদ্দিন আহমেদ</span></div>
+                    <div class="info-item"><span class="label">মাতার নাম:</span> <span class="value">সাবিনা ইয়াসমীন</span></div>
+                    <div class="info-item"><span class="label">স্থায়ী ঠিকানা:</span> <span class="value">পশ্চিম নাগড়া, নেত্রকোনা পৌরসভা, ওয়ার্ড নং-০৮, নেত্রকোনা।</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualifications / Education Background Timeline -->
+    <section id="qualifications" style="background-color: rgba(255,255,255,0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <p>একাডেমিক ব্যাকগ্রাউন্ড</p>
+                <h2>শিক্ষাগত যোগ্যতা ও ফলাফল</h2>
+            </div>
+            <div class="timeline">
+                <!-- Nursing B.Sc. -->
+                <div class="timeline-item">
+                    <span class="timeline-badge">২০২৮</span>
+                    <h3 class="timeline-title">B.Sc. in Nursing (ব্যাচেলর অব সায়েন্স ইন নার্সিং)</h3>
+                    <p class="timeline-institution">স্কাবো নার্সিং কলেজ, ময়মনসিংহ</p>
+                    <p class="timeline-result">ফলাফল: GPA 4.00 (৫.০০ এর মধ্যে)</p>
+                </div>
+                <!-- HSC -->
+                <div class="timeline-item">
+                    <span class="timeline-badge">২০২১</span>
+                    <h3 class="timeline-title">Higher Secondary Certificate (HSC) — বিজ্ঞান বিভাগ</h3>
+                    <p class="timeline-institution">আবু আব্বাছ কলেজ, নেত্রকোনা | ময়মনসিংহ শিক্ষা বোর্ড</p>
+                    <p class="timeline-result">ফলাফল: GPA 4.00 (৫.০০ এর মধ্যে)</p>
+                </div>
+                <!-- SSC -->
+                <div class="timeline-item">
+                    <span class="timeline-badge">২০১৯</span>
+                    <h3 class="timeline-title">Secondary School Certificate (SSC) — বিজ্ঞান বিভাগ</h3>
+                    <p class="timeline-institution">নেত্রকোনা হাই স্কুল, নেত্রকোনা | ঢাকা শিক্ষা বোর্ড</p>
+                    <p class="timeline-result">ফলাফল: GPA 4.11 (৫.০০ এর মধ্যে)</p>
+                </div>
+                <!-- JSC -->
+                <div class="timeline-item">
+                    <span class="timeline-badge">২০১৬</span>
+                    <h3 class="timeline-title">Junior School Certificate (JSC)</h3>
+                    <p class="timeline-institution">দত্ত উচ্চ বিদ্যালয়, নেত্রকোনা | ঢাকা শিক্ষা বোর্ড</p>
+                    <p class="timeline-result">ফলাফল: GPA 3.85 (৫.০০ এর মধ্যে)</p>
+                </div>
+                <!-- PEC -->
+                <div class="timeline-item">
+                    <span class="timeline-badge">২০১৩</span>
+                    <h3 class="timeline-title">Primary Education Completion (PEC)</h3>
+                    <p class="timeline-institution">৮৮ নং মানিকগঞ্জ সরকারি প্রাথমিক বিদ্যালয়, মানিকগঞ্জ</p>
+                    <p class="timeline-result">ফলাফল: GPA 5.00 (A+ গোল্ডেন)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+    <div class="container">
+        <div class="section-header">
+            <p>আমার সেবাসমূহ</p>
+            <h2>প্রফেশনাল ও ক্রিয়েটিভ স্কিলসেট</h2>
+        </div>
+        <div class="grid-cards">
+            <div class="custom-card">
+                <div class="card-icon"><i class="fa-solid fa-user-nurse"></i></div>
+                <h3>ক্লিনিক্যাল নার্সিং ও ক্রিটিক্যাল কেয়ার</h3>
+                <p>আইসিইউ (ICU), সিসিইউ (CCU) এবং অর্থোপেডিকস বিভাগে বিশেষায়িত কেয়ার প্রদানের বাস্তব অভিজ্ঞতা। জটিল রোগীর অবস্থা পর্যবেক্ষণ, ভাইটাল সাইন মনিটরিং, ট্রমা ও ফ্র্যাকচার ম্যানেজমেন্ট এবং হসপিটাল ক্লিনিক্যাল প্র্যাকটিসের তাত্ত্বিক ও ব্যবহারিক জ্ঞান।</p>
+            </div>
+
+            <div class="custom-card">
+                <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3>প্রফেশনাল ইলেকট্রিক্যাল ওয়ার্কস</h3>
+                <p>ইলেকট্রিক্যাল সিস্টেম ইনস্টলেশন, ওয়্যারিং, মেইনটেন্যান্স, ট্রাবলশুটিং এবং পাওয়ার ব্যাক-আপ (UPS/IPS/Generator) ম্যানেজমেন্টের বাস্তব অভিজ্ঞতা ও কারিগরি জ্ঞান।</p>
+            </div>
+
+            <div class="custom-card">
+                <div class="card-icon"><i class="fa-solid fa-laptop-file"></i></div>
+                <h3>অফিস অ্যাপ্লিকেশন ও ডেটা ম্যানেজমেন্ট</h3>
+                <p>মাইক্রোসফট ওয়ার্ড, এক্সেল ও পাওয়ারপয়েন্ট পরিচালনায় বিশেষ দক্ষতা। এর মাধ্যমে হাসপাতালের রিপোর্ট তৈরি, ডেটা এন্ট্রি, প্রেসক্রিপশন ফরম্যাটিং এবং পেশাদার প্রেজেন্টেশন স্লাইড ডিজাইনের বাস্তব অভিজ্ঞতা।</p>
+            </div>
+
+            <div class="custom-card">
+                <div class="card-icon"><i class="fa-solid fa-masks-theater"></i></div>
+                <h3>প্রফেশনাল থিয়েটার ও নাট্যশিল্প</h3>
+                <p>দীর্ঘদিন ধরে সফলতার সাথে থিয়েটার ও মঞ্চ নাটকে অভিনয় এবং বিভিন্ন কর্মশালায় অংশগ্রহণের অভিজ্ঞতা। এটি আমার পাবলিক স্পিকিং, দলগত কাজের মানসিকতা (Teamwork) এবং তাৎক্ষণিক পরিস্থিতি নিয়ন্ত্রণের দক্ষতা প্রকাশ করে।</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="projects" style="background-color: rgba(255,255,255,0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+        <div class="section-header">
+            <p>কাজের নমুনা</p>
+            <h2>নির্বাচিত প্রজেক্টস ও বাস্তব অভিজ্ঞতা</h2>
+        </div>
+        <div class="grid-cards">
+            <div class="project-card">
+                <div class="project-banner"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="tag">ক্লিনিক্যাল</span>
+                        <span class="tag">ক্রিটিক্যাল কেয়ার</span>
+                    </div>
+                    <h3>আইসিইউ, সিসিইউ ও অর্থোপেডিকস প্র্যাকটিস</h3>
+                    <p>দীর্ঘদিন ধরে নিবিড় পর্যবেক্ষণ কেন্দ্র (ICU/CCU) এবং অর্থোপেডিকস ওয়ার্ডে সরাসরি দায়িত্ব পালন। জটিল রোগীদের লাইফ-সাপোর্ট মনিটরিং, ট্রমা কেয়ার, ফ্র্যাকচার ম্যানেজমেন্ট এবং পোস্ট-অপারেটিভ কেয়ারের সফল বাস্তব অভিজ্ঞতা।</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-banner"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="tag">কারিগরি</span>
+                        <span class="tag">ইলেকট্রিক্যাল</span>
+                    </div>
+                    <h3>ইলেকট্রিক্যাল ওয়্যারিং ও ট্রাবলশুটিং</h3>
+                    <p>একজন প্রফেশনাল ইলেকট্রিশিয়ান হিসেবে দীর্ঘ সময় কাজ করার বাস্তব অভিজ্ঞতা। ডমেস্টিক ও ইন্ডাস্ট্রিয়াল ওয়্যারিং, পাওয়ার ডিস্ট্রিবিউশন এবং ব্যাক-আপ সিস্টেম (IPS/UPS/Generator) মেইনটেন্যান্সে শতভাগ সফলতার রেকর্ড।</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-banner"><i class="fa-solid fa-file-word"></i></div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="tag">অফিস স্কিল</span>
+                        <span class="tag">ওয়ার্ড প্রসেসিং</span>
+                    </div>
+                    <h3>সরাসরি ওয়ার্ড প্রসেসিং ও ডেটা এন্ট্রি</h3>
+                    <p>অফিস অ্যাপ্লিকেশনের মাধ্যমে প্রফেশনাল ডকুমেন্টেশন, মেডিকেল ডেটা এন্ট্রি, কেস স্টাডি রিপোর্ট তৈরি এবং দ্রুত গতিতে নির্ভুল বাংলা ও ইংরেজি ওয়ার্ড প্রসেসিংয়ের প্র্যাকটিক্যাল অভিজ্ঞতা।</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-banner"><i class="fa-solid fa-masks-theater"></i></div>
+                <div class="project-body">
+                    <div class="project-tags">
+                        <span class="tag">সংস্কৃতি</span>
+                        <span class="tag">থিয়েটার</span>
+                    </div>
+                    <h3>নাট্য কর্মশালা ও মঞ্চ অভিনয়</h3>
+                    <p>নেত্রকোনার ঐতিহ্যবাহী 'মহুয়া থিয়েটার' সহ বিভিন্ন স্বনামধন্য নাট্যদলের কর্মশালায় দীর্ঘদিনের অংশগ্রহণ। একাধিক মঞ্চ নাটকে অভিনয়ের অভিজ্ঞতা, যা আমার পাবলিক স্পিকিং এবং টিম লিডারশিপ দক্ষতাকে উন্নত করেছে।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section Box -->
+    <section id="contact" style="padding-bottom: 120px;">
+        <div class="container">
+            <div class="contact-box">
+                <h2>একসাথে নতুন কিছু শুরু করা যাক!</h2>
+                <p>আপনি কি আপনার স্বাস্থ্যসেবা প্রতিষ্ঠান বা হাসপাতালের জন্য একজন অত্যন্ত দক্ষ, যত্নশীল এবং পেশাদার নার্সিং প্রফেশনাল খুঁজছেন? একজন ডেডিকেটেড নার্স হিসেবে আমি শুধু দায়িত্ব পালন নয়, বরং রোগীদের সর্বোচ্চ সেবা নিশ্চিত করতে প্রতিশ্রুতিবদ্ধ। আমার অর্জিত জ্ঞান ও ক্লিনিক্যাল দক্ষতা দিয়ে আপনার প্রতিষ্ঠানের সেবার মানকে আরও এক ধাপ এগিয়ে নিতে এবং ভবিষ্যতে হাসপাতালের জন্য সুনাম ও গৌরব বয়ে আনতে আমি বদ্ধপরিকর। এছাড়া যেকোনো ডিজিটাল ক্রিয়েটিভ প্রোজেক্টে কোলাবোরেশনের জন্যও আমি উন্মুক্ত। সরাসরি নিচে যোগাযোগ করুন।</p>
+                <a href="mailto:raahshorif@gmail.com" class="btn-primary" style="display: inline-block;"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> সরাসরি মেইল করুন</a>
+                
+                <!-- Modern Connected Social Icons Grid -->
+                <div class="social-row">
+                    <a href="mailto:raahshorif@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/rahaman-ahamed-shorif-b88417356/" class="social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/rahaman.ahamed.shorif/" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@rashorif" class="social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://discord.com/users/1017414404016451666" class="social-icon" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Rahaman Ahamed Shorif. All Rights Reserved. Built with Premium Dark Minimalist Code.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
